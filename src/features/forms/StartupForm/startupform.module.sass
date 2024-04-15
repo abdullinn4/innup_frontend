@@ -1,0 +1,95 @@
+@import "src/styles/colors"
+
+.create_startup_wrapper
+  display: flex
+  flex-direction: column
+  padding: 52px
+
+  h1
+    display: flex
+    justify-content: center
+    align-items: center
+
+
+  p
+    color: $c-dark-grey-color
+    font-size: 13px
+    font-weight: 500
+
+.basic_data_inputs
+  height: 29px
+  width: 300px
+  border-radius: 7px
+  border: 2px solid $c-dark-grey-color
+  outline: none
+  padding: 0 4px 0 4px
+
+input:focus
+  border: 3px solid $c-blue-color
+
+.basic_data_textarea
+  height: 200px
+  width: 900px
+  border-radius: 7px
+  border: 2px solid $c-dark-grey-color
+  outline: none
+  padding: 0 4px 0 4px
+
+textarea:focus
+  border: 3px solid $c-blue-color
+
+.basic_data_slogan_input
+  height: 29px
+  width: 900px
+  border-radius: 7px
+  border: 2px solid $c-dark-grey-color
+  outline: none
+  padding: 0 4px 0 4px
+
+.basic_data_select
+  height: 29px
+  width: 300px
+  border-radius: 7px
+  border: 2px solid $c-dark-grey-color
+  outline: none
+  padding: 0 4px 0 4px
+
+
+.basic_data_select option
+  height: 29px
+  width: 300px
+  border-radius: 7px
+  border: 2px solid $c-dark-grey-color
+  outline: none
+  padding: 0 4px 0 4px
+
+.create_startup_media
+  display: flex
+  flex-direction: row
+
+
+.additional_photos
+  margin-left: 50px
+  margin-top: 28px
+  border-left: 2px solid $c-grey-color
+  padding-left: 30px
+
+.selected_photo
+  width: 120px
+  height: 100px
+
+.selected_photo_container
+  position: relative
+
+.delete_selected_photo_button
+  background-image: url("src/assets/icons/red-delete-icon.svg")
+  background-size: cover
+  width: 18px
+  height: 23px
+  border: none
+  position: absolute
+  top: 0
+  right: 7px
+  padding: 5px 10px
+  cursor: pointer
+  background-color: transparent

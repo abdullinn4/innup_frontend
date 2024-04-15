@@ -1,0 +1,41 @@
+@import "src/styles/colors"
+
+.upload_input
+  position: relative
+  width: 120px
+  height: 100px
+
+
+
+.upload_input input[type="file"]
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  opacity: 0
+  cursor: pointer
+
+.upload_input label
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  align-items: center
+  width: 100%
+  height: 100%
+  border: 2px solid $c-dark-grey-color
+  border-radius: 5px
+  background: white
+
+.upload_input label img
+  margin-bottom: 10px
+
+.upload_input label span
+  display: flex
+  font-size: 15px
+  color: $c-dark-grey-color
+  align-items: center
+  justify-content: center
+  text-align: center
+
+

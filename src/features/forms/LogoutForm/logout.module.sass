@@ -1,0 +1,42 @@
+@import "src/styles/colors"
+
+.logout_modal
+  background: $c-base-color
+  border: 2px solid $c-grey-color
+  border-radius: 7px
+  height: 200px
+  width: 340px
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 1010
+
+  p
+    text-align: center
+    padding-top: 60px
+
+
+.modal_buttons_container
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+  padding-top: 40px
+  gap: 40px
+
+.modal_button
+  border: 2px solid $c-blue-color !important
+  height: 30px
+  width: 53px
+  background-color: $c-base-color
+  border-radius: 21px
+  color: $c-blue-color
+  font-size: 15px
+  justify-content: center
+  align-items: center
+  text-decoration: none !important
+
+.modal_button:hover
+  background: $c-blue-color
+  color: $c-base-color

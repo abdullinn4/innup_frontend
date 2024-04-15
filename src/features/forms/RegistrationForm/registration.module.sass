@@ -1,0 +1,91 @@
+@import "../../../styles/colors"
+
+.register_body
+  background-color: $c-blue-color
+  min-height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  margin: 0
+  padding: 0
+
+
+.register_info
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  gap: 30px
+  position: absolute
+  left: 0
+  right: 0
+  margin: 0 auto
+
+  h1
+    color: $c-base-color
+    font-weight: 600
+    font-size: 40px
+
+
+.register_info_form
+  padding: 70px 20px 70px
+  display: flex
+  flex-direction: column
+  gap: 30px
+  background-color: $c-base-color
+  border-radius: 50px
+  width: 450px
+  height: 100%
+  justify-content: center
+  align-items: center
+
+
+  input
+    width: 300px
+    height: 30px
+    border: 2px solid $c-grey-color
+    border-radius: 7px
+    outline: none
+    font-size: 16px
+    padding: 4px
+
+  input:focus
+    border: 3px solid $c-blue-color
+
+  button
+    border: 2px solid $c-blue-color
+    height: 32px
+    width: 310px
+    background-color: $c-base-color
+    border-radius: 7px
+    color: $c-blue-color
+    font-size: 15px
+
+  button:hover
+    background-color: $c-blue-color
+    color: $c-base-color
+
+  a
+    color: $c-blue-color
+    font-size: 15px
+    text-decoration: none
+
+  a:hover
+    text-decoration: underline
+
+.error
+  width: 300px
+  font-size: 14px
+  color: $c-red-color
+
+
+
+
+
+
+
+
+
+
+
+

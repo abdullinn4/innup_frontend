@@ -1,0 +1,1 @@
+export {RegistrationPage} from "./SignupPage.tsx";
