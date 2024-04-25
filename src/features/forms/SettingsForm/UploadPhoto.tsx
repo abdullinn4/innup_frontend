@@ -1,7 +1,7 @@
 import style from "./settings.module.sass";
 import {FileInput} from "../../../shared/FileInput.tsx";
 import {useState} from "react";
-import axios from "axios";
+import {handleDeletePhoto, handleUpdatePhoto} from "../../../service";
 
 
 export const UploadPhoto = () => {
@@ -15,27 +15,18 @@ export const UploadPhoto = () => {
         };
         reader.readAsDataURL(file);
     }
-    const handleUpdatePhoto = async () => {
+
+    const handleUpdate = () => {
         if (avatar) {
-            const formData = new FormData();
-            formData.append("avatar", avatar)
-            try {
-                const response = await axios.post('post/upload-photo', formData)
-                console.log("Фото успешно загружено в профиль",response.data)
-            } catch (error) {
-                console.error("Ошибка при загрузке фото на сервер", error)
-            }
+            handleUpdatePhoto(avatar)
+                .then(result => console.log(result))
+                .catch(error => console.error(error));
+        }else {
+            console.warn("No avatar selected.");
         }
     }
-    const handleDeletePhoto = async () => {
-        try {
-            await axios.delete('api/delete_photo');
-            console.log("Фото успешно удалено")
-            setAvatar(null)
-        }catch (error){
-            console.error("Ошибка при удалении фото", error)
-        }
-    }
+    handleDeletePhoto().then(result => console.log(result), () => {})
+
     const handleDeleteSelectedPhoto = () => {
         setAvatar(null)
         setSelectedPhoto(null)
@@ -53,7 +44,7 @@ export const UploadPhoto = () => {
                     <FileInput onFileSelect={handleAvatarSelect}/>
                 )}
                 <div className={style.button_container}>
-                    <button type="submit" onSubmit={handleUpdatePhoto} className={style.update_button}>Обновить</button>
+                    <button type="submit" onSubmit={handleUpdate} className={style.update_button}>Обновить</button>
                     <button type="submit" onSubmit={handleDeletePhoto} className={style.delete_button}>
                             <img src="src/assets/icons/red-delete-icon.svg" alt="delete_icon" className={style.delete_icon}/>
                             <p>Удалить</p>

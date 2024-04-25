@@ -1,19 +1,19 @@
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from 'yup';
-import axios from "axios";
 import {Link} from "react-router-dom";
 import styles from "./registration.module.sass"
+import {useState} from "react";
+import {UserSignup} from '../../../entities'
+import {useSignup} from "../../../service";
 
-interface FormValues{
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-}
 
 export const RegistrationForm = () => {
-    const initialValues = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
+    const[showPassword, setShowPassword] = useState(false);
+    const[showConfirmPassword, setShowConfirmPassword] = useState(false)
+
+    const{errorMessage, handleSubmitSignup} = useSignup()
+
+    const initialValues: UserSignup = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
     const validationSchema = Yup.object({
         firstName: Yup.string().required('Обязательное поле'),
         lastName: Yup.string().required('Обязательное поле'),
@@ -24,32 +24,28 @@ export const RegistrationForm = () => {
         ).required("Обязательное поле"),
         confirmPassword: Yup.string().oneOf([Yup.ref('password')],'Пароли не совпадают').nullable().required('Обязательное поле')});
 
-    const handleSubmit = async (values: FormValues) => {
-        try{
-            const response = await axios.post<FormValues>('post/registrationForm',{
-                email: values.email,
-                password: values.password,
-            });
-            console.log(response.data);
-        }catch (error){
-            console.error('Error:', error);
-        }
-
-    }
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+    const toggleConfirmPasswordVisibility = () => {
+        setShowConfirmPassword(!showConfirmPassword);
+    };
     return(
             <body className={styles.register_body}>
                 <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
-                    onSubmit={handleSubmit}
+                    onSubmit={handleSubmitSignup}
                 >
                     {({isValid,dirty}) => (
                         <div className={styles.register_info}>
                             <div>
                                 <h1>innup</h1>
                             </div>
-                            <Form >
+                            <Form>
                                 <div className={styles.register_info_form}>
+                                    {errorMessage && <div style={{color: 'red'}}>
+                                        {errorMessage}</div>}
                                     <div>
                                         <Field type="text" name="firstName" placeholder="Введите имя"/>
                                         <ErrorMessage name="firstName" component="div" className={styles.error}/>
@@ -62,14 +58,25 @@ export const RegistrationForm = () => {
                                         <Field type="email" name="email" placeholder="Введите почту"/>
                                         <ErrorMessage name="email" component="div" className={styles.error}/>
                                     </div>
-                                    <div>
-                                        <Field type="password" name="password" placeholder="Введите пароль"/>
-                                        <ErrorMessage name="password" component="div" className={styles.error}/>
+                                    <div className={styles.passwordField}>
+                                        <Field
+                                            type={showPassword ? 'text' : 'password'}
+                                            name="password"
+                                            placeholder="Введите пароль"
+                                        />
+                                        <button type="button" className={styles.togglePasswordButton} onClick={togglePasswordVisibility}>
+                                            {showPassword ? <img src="src/assets/icons/clarity_eye-show-line.svg"/> : <img src="src/assets/icons/clarity_eye-hide-solid.svg"/>}
+                                        </button>
+
                                     </div>
-                                    <div>
-                                        <Field type="password" name="confirmPassword" placeholder="Повторите пароль"/>
-                                        <ErrorMessage name="confirmPassword" component="div" className={styles.error}/>
+                                    <ErrorMessage name="password" component="div" className={styles.error_password} />
+                                    <div className={styles.passwordField}>
+                                        <Field type={showConfirmPassword ? "text" : "password"} name="confirmPassword" placeholder="Повторите пароль"/>
+                                        <button type="button" className={styles.togglePasswordButton} onClick={toggleConfirmPasswordVisibility}>
+                                            {showConfirmPassword ? <img src="src/assets/icons/clarity_eye-show-line.svg"/> : <img src="src/assets/icons/clarity_eye-hide-solid.svg"/>}
+                                        </button>
                                     </div>
+                                    <ErrorMessage name="confirmPassword" component="div" className={styles.error_password}/>
                                     <button type="submit" disabled={!isValid || !dirty}>Регистрация</button>
                                     <div>Уже есть аккаунт? <Link to="/login">Войти</Link> </div>
                                 </div>

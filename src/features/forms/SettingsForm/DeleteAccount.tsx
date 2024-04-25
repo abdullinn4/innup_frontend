@@ -1,21 +1,9 @@
 import {useState} from "react";
-import axios from "axios";
 import style from "./settings.module.sass";
+import {handleDeleteAccount} from "../../../service";
 export const DeleteAccount = () => {
     const[showModal,setShowModal] = useState(false)
-     const handleDeleteAccount = async () => {
-        try{
-            const response = await axios.delete("api/delete-account"); //мб не delete, a post
-            if (response.data.success){
-                console.log('Аккаунт успешно удален');
-                //редирект на главную страницу
-            }else{
-                console.error('Ошибка при удалении аккаунта')
-            }
-        }catch (error) {
-            console.error("Ошибка", error);
-        }
-     }
+
     return(
         <>
             <button type="submit" onClick={() => setShowModal(true)} className={style.delete_account_button}>

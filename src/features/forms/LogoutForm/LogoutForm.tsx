@@ -1,22 +1,9 @@
 import {useState} from "react";
-import axios from "axios";
 import style from "./logout.module.sass"
+import {handleLogout} from "../../../service";
 
 export const LogoutForm = () => {
     const[showModal,setShowModal] = useState(false);
-    const handleLogout = async() => {
-        try{
-            const response = await axios.post('post/logout');
-            if (response.data.success){
-                console.log('Выход совершен успешно')
-                //редирект на главную
-            }else{
-                console.error('Ошибка при выходе из аккаунта')
-            }
-        }catch (error) {
-            console.error("Ошибка", error);
-        }
-    }
 
     return(
         <>
