@@ -10,7 +10,7 @@ export const BasicDataForm = () => {
             <Field type="text" name="slogan" className={style.basic_data_slogan_input}/>
 
             <p>Веб-сайт</p>
-            <Field type="email" name="web-site" className={style.basic_data_inputs}/>
+            <Field type="email" name="webSite" className={style.basic_data_inputs}/>
 
             <p>Описание</p>
             <Field name="description" as="textarea" className={style.basic_data_textarea}/>
