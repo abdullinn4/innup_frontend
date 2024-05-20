@@ -3,7 +3,7 @@ import {Form, Formik} from "formik";
 import {handleSubmitBasicData} from "../../../service";
 
 export const BasicDataForm = () => {
-    const initialValues = {name: '', aboutMe:'',username:''};
+    const initialValues = {name: '', aboutMe:'',email:''};
 
     return(
         <Formik
@@ -17,8 +17,8 @@ export const BasicDataForm = () => {
                 <h2>О себе</h2>
                 <textarea name="aboutMe" className={style.basic_data_desc_input}/>
 
-                <h2>Username</h2>
-                <input type="text" name="username" className={style.basic_data_inputs}/>
+                <h2>Email</h2>
+                <input type="text" name="email" className={style.basic_data_inputs}/>
 
                 <div className={style.basic_data_button_container}>
                     <button type="submit" className={style.update_button}>Обновить</button>

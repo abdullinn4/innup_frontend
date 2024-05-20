@@ -11,10 +11,7 @@ export const HeaderGuest = () => {
                 <nav>
                     <ul className={style.header_list}>
                         <li>
-                            <Link to="#">Главная</Link>
-                        </li>
-                        <li>
-                            <Link to="#">Стартапы</Link>
+                            <Link to="/startups">Главная</Link>
                         </li>
                         <li>
                             <Link to="#">Категории</Link>
@@ -26,7 +23,7 @@ export const HeaderGuest = () => {
                             <Link to="#">Чат</Link>
                         </li>
                         <li>
-                            <Link to="#">Опубликовать проект</Link>
+                            <Link to="/create-startup">Опубликовать проект</Link>
                         </li>
                         <li>
                             <Link to="#">Войти</Link>

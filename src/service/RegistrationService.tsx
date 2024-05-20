@@ -6,7 +6,7 @@ export const useSignup = () => {
 
     const handleSubmitSignup = async (values: UserSignup) => {
         try {
-            const response = await axios.post<UserSignup>('post/registrationForm',{
+            const response = await axios.post<UserSignup>('http://localhost:5294/api/User/Create',{
                 email: values.email,
                 password: values.password,
                 firstName: values.firstName,

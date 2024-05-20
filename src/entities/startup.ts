@@ -3,6 +3,7 @@ export interface StartupDto{
     slogan: string;
     webSite: string;
     description: string;
+    price: string;
     category: string;
     email: string;
     phone: string;
@@ -15,9 +16,16 @@ export interface StartupEntity{
     slogan: string;
     webSite: string;
     description: string;
+    price: string;
     category: string;
     email: string;
     phone: string;
     mainPhotoUrl: string;
     additionalPhotosUrl: string[];
+}
+export interface StartupProfile{
+    id: string;
+    name: string;
+    description: string;
+    imgUrl: string;
 }

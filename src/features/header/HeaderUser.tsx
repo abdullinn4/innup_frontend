@@ -12,10 +12,7 @@ export const HeaderUser = () => {
                 <nav>
                     <ul className={style.header_list}>
                         <li>
-                            <Link to="#">Главная</Link>
-                        </li>
-                        <li>
-                            <Link to="#">Стартапы</Link>
+                            <Link to="/startups">Главная</Link>
                         </li>
                         <li>
                             <Link to="#">Категории</Link>

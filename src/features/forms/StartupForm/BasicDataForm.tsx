@@ -14,6 +14,9 @@ export const BasicDataForm = () => {
 
             <p>Описание</p>
             <Field name="description" as="textarea" className={style.basic_data_textarea}/>
+
+            <p>Укажите, какой примерный бюджет потребуется для развития стартапа</p>
+            <Field type="text" name="price" className={style.basic_data_slogan_input}/>
         </>
 
     )

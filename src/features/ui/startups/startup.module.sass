@@ -1,0 +1,88 @@
+@import "src/styles/colors"
+
+.startups_wrapper
+  display: flex
+  padding-top: 40px
+  flex-direction: column
+  gap: 40px
+  align-items: center
+
+.startups_row
+  display: flex
+  gap: 80px
+
+.startup
+  height: 290px
+  width: 300px
+  padding: 10px
+  border-radius: 7px
+
+.startup_img
+  width: 300px
+  height: 170px
+
+.startup:hover
+  box-shadow: 0 0 10px rgb(128, 121, 121)
+
+.like_button
+  width: 35px
+  height: 35px
+  margin-left: 270px
+  background: none
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 0
+  border: none
+
+.like_button:hover
+  background-color: #d9d9e1
+
+.like_icon
+  width: 100%
+  height: 100%
+  object-fit: contain
+
+.search_icon
+  height: 30px
+  width: 30px
+  cursor: pointer
+
+.search_button
+  padding-top: 15px
+  height: 30px
+  width: 30px
+  text-decoration: none
+  background: none
+  border: none
+
+.startups_header
+  display: flex
+  justify-content: center
+  padding-top: 20px
+
+
+.search_input
+  display: flex
+  width: 400px
+  padding: 10px
+  margin: 10px 0
+  font-size: 15px
+  transition: border-color 0.3s ease
+  background: none
+  border-radius: 0
+  border: none
+  border-bottom: 1px solid $c-grey-color
+
+.search_input:hover
+  border: none
+  border-bottom: 1px solid $c-grey-color
+
+.search_input:focus
+  outline: none
+  border: none
+  border-bottom: 1px solid $c-grey-color
+
+
+
+

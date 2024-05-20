@@ -1,5 +1,6 @@
 export interface UserBasicData{
     name: string,
     aboutMe: string,
-    username: string
+    email: string,
+    photoUrl?: string
 }

@@ -4,6 +4,7 @@ import {RegistrationPage} from "../pages/signup";
 import {SettingsPage} from "../pages/settings";
 import {CreateStartupPage} from "../pages/createStartup";
 import {StartupsPage} from "../pages/startups";
+import {ProfilePage} from "../pages/profile";
 
 
 const AppRouter = () =>{
@@ -14,6 +15,7 @@ const AppRouter = () =>{
             <Route path="/settings" element={<SettingsPage/>}/>
             <Route path="/create-startup" element={<CreateStartupPage/>}/>
             <Route path="/startups" element={<StartupsPage/>}/>
+            <Route path="/profile/:id" element={<ProfilePage/>}/>
         </Routes>
     )
 }

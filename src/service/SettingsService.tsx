@@ -4,10 +4,10 @@ import {useState} from "react";
 
 export const handleSubmitBasicData = async (values: UserBasicData) => {
     try {
-        const response = await axios.post('post/basic-data-form', {
+        const response = await axios.post('http://localhost:5294/api/User/Add-basic-data', {
             name: values.name,
             aboutMe: values.aboutMe,
-            username: values.username
+            username: values.email
         })
         console.log('',response.data)
     }catch (error) {
@@ -20,7 +20,7 @@ export const useChangePassword = () => {
 
     const handleSubmitChangePassword = async (values: UserChangePassword) => {
         try {
-            const response = await axios.post('post/change-password', {
+            const response = await axios.post('http://localhost:5294/api/User/Change-password', {
                 oldPassword: values.oldPassword,
                 newPassword: values.newPassword
             })
@@ -40,7 +40,7 @@ export const useChangePassword = () => {
 }
 export const handleDeleteAccount = async () => {
     try{
-        const response = await axios.delete("api/delete-account"); //мб не delete, a post
+        const response = await axios.delete('http://localhost:5294/api/User/Delete-account'); //мб не delete, a post
         if (response.data.success){
             console.log('Аккаунт успешно удален');
             //редирект на главную страницу
@@ -55,8 +55,8 @@ export const handleDeleteAccount = async () => {
 export const handleUpdatePhoto = (avatar: File): Promise<any> => {
     const formData = new FormData();
     formData.append("avatar", avatar);
-    return axios.post('post/upload-photo', formData);
+    return axios.post('http://localhost:5294/api/User/Upload-photo', formData);
 }
 export const handleDeletePhoto = (): Promise<void> => {
-    return axios.delete('api/delete_photo');
+    return axios.delete('http://localhost:5294/api/User/Delete-photo');
 }

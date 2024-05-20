@@ -6,7 +6,7 @@ export const useLogin = () => {
     const[errorMessage, setErrorMessage] = useState('')
     const handleSubmitLogin = async (values: UserLogin) => {
         try {
-            const response = await axios.post<UserLogin>('post/login', {
+            const response = await axios.post<UserLogin>('http://localhost:5294/api/User/Login', {
                 email: values.email,
                 password: values.password,
             });
