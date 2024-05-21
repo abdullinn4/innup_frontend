@@ -11,7 +11,7 @@ export const MenuModal= ({onClose} : {onClose :React.MouseEventHandler<HTMLLIEle
                     <Link to="#" className={style.menu_modal_links}>Мои стартапы</Link>
                 </li>
                 <li onClick={onClose}>
-                    <Link to="#" className={style.menu_modal_links}>Профиль</Link>
+                    <Link to="/profile/:id" className={style.menu_modal_links}>Профиль</Link>
                 </li>
                 <li onClick={onClose}>
                     <Link to="/settings" className={style.menu_modal_links}>Настройки</Link>

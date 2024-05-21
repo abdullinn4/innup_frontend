@@ -5,6 +5,7 @@ import {SettingsPage} from "../pages/settings";
 import {CreateStartupPage} from "../pages/createStartup";
 import {StartupsPage} from "../pages/startups";
 import {ProfilePage} from "../pages/profile";
+import {StartupPage} from "../pages/startup";
 
 
 const AppRouter = () =>{
@@ -16,6 +17,7 @@ const AppRouter = () =>{
             <Route path="/create-startup" element={<CreateStartupPage/>}/>
             <Route path="/startups" element={<StartupsPage/>}/>
             <Route path="/profile/:id" element={<ProfilePage/>}/>
+            <Route path="/startup/:id" element={<StartupPage/>}/>
         </Routes>
     )
 }

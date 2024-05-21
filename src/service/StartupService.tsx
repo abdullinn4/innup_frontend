@@ -10,7 +10,7 @@ export const fetchStartups = async (): Promise<StartupEntity[]> => {
         throw e;
     }
 };
-export const updateLikeStatusStartup = async (startupId: string, liked: boolean): Promise<void> => {
+export const updateLikeStatus = async (startupId: string, liked: boolean): Promise<void> => {
     try {
         const response = await axios.post('http://localhost:5294/api/Startup/Like', { startupId, liked });
         console.log('Like status updated:', response.data);
@@ -19,3 +19,13 @@ export const updateLikeStatusStartup = async (startupId: string, liked: boolean)
         throw error;
     }
 };
+
+export const fetchStartupById = async (id: string): Promise<StartupEntity> => {
+    try {
+        const response = await axios.get<StartupEntity>(`http://localhost:5294/api/Startup/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching startup:', error);
+        throw error;
+    }
+}

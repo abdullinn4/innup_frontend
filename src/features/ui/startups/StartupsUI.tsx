@@ -1,7 +1,7 @@
 import { StartupEntity } from "../../../entities";
 import { StartupCard } from "./StartupCard.tsx";
 import { useEffect, useState } from "react";
-import style from './startup.module.sass';
+import style from './startups.module.sass';
 import { fetchStartups } from "../../../service";
 
 export const StartupsUI = () => {

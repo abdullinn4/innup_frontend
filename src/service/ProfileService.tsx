@@ -33,13 +33,4 @@ export const fetchFavoriteStartups = async (userId: string): Promise<StartupProf
     }
 };
 
-export const updateLikeStatusProfile = async (startupId: string, liked: boolean): Promise<void> => {
-    try {
-        const response = await axios.post(`${API_URL}/Startup/Like`, { startupId, liked });
-        console.log('Like status updated:', response.data);
-    } catch (error) {
-        console.error('Error updating like status:', error);
-        throw error;
-    }
-};
 
