@@ -24,6 +24,7 @@ export interface StartupEntity{
     additionalPhotosUrl: string[];
     createDate: string;
     userId: string;
+    status: 'В обработке' | 'Принято' | 'Отклонено';
 }
 export interface StartupProfile{
     id: string;
