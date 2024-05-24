@@ -13,7 +13,7 @@ export const StartupCard: React.FC<StartupProps> = ({startup}) => {
 
     return(
         <Link to={`/startup/${startup.id}`}>
-            <div>
+            <div className={style.startup}>
                 <img src={startup.mainPhotoUrl} alt={startup.name} className={style.startup_img} />
                 <div className={style.startup_info}>
                     <h4>{startup.name}</h4>

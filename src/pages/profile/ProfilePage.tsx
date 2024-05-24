@@ -1,11 +1,12 @@
-import {Footer, Header, ProfileUI} from "../../features";
+import {Footer, Header} from "../../features";
 import {useParams} from "react-router-dom";
+import {ProfileUI} from "../../components";
 
 export const ProfilePage = () => {
     const {id} = useParams<{id: string}>();
     return(
         <>
-            <Header isUserLoggedIn={true}/>
+            <Header/>
             <ProfileUI userId={id!}/>
             <Footer/>
         </>

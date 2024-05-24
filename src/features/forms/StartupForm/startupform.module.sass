@@ -16,6 +16,7 @@
     font-size: 13px
     font-weight: 500
 
+
 .basic_data_inputs
   height: 29px
   width: 300px
@@ -77,6 +78,7 @@ textarea:focus
 .add_additional_photos_container
   display: flex
   gap: 10px
+  flex-wrap: wrap
 
 .selected_photo
   width: 120px
@@ -132,3 +134,36 @@ textarea:focus
   color: red
   padding-top: 5px
   font-size: 14px
+
+.custom_select_container
+  position: relative
+  cursor: pointer
+  width: 400px
+
+.custom_select
+  padding: 10px
+  border-radius: 4px
+  background-color: white
+  border: 2px solid $c-dark-grey-color
+
+
+.custom_select_dropdown
+  position: absolute
+  top: 100%
+  left: 0
+  right: 0
+  border: 1px solid #ccc
+  border-radius: 4px
+  background-color: white
+  z-index: 1000
+  max-height: 200px
+  overflow-y: auto
+
+
+.custom_select_option
+  padding: 10px
+  &:hover
+    background-color: #f0f0f0
+
+
+

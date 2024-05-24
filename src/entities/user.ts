@@ -3,7 +3,6 @@ export interface User {
     lastName: string;
     email: string;
     aboutMe?: string;
-    username?: string
 }
 
 export interface UserSignup extends User {

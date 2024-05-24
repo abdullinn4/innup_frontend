@@ -48,15 +48,15 @@ export const RegistrationForm = () => {
                                         {errorMessage}</div>}
                                     <div>
                                         <Field type="text" name="firstName" placeholder="Введите имя"/>
-                                        <ErrorMessage name="firstName" component="div" className={styles.error}/>
+                                        <ErrorMessage name="firstName" component="p" className={styles.error}/>
                                     </div>
                                     <div>
                                         <Field type="text" name="lastName" placeholder="Введите фамилию"/>
-                                        <ErrorMessage name="lastName" component="div" className={styles.error}/>
+                                        <ErrorMessage name="lastName" component="p" className={styles.error}/>
                                     </div>
                                     <div>
                                         <Field type="email" name="email" placeholder="Введите почту"/>
-                                        <ErrorMessage name="email" component="div" className={styles.error}/>
+                                        <ErrorMessage name="email" component="p" className={styles.error}/>
                                     </div>
                                     <div className={styles.passwordField}>
                                         <Field
@@ -67,18 +67,20 @@ export const RegistrationForm = () => {
                                         <button type="button" className={styles.togglePasswordButton} onClick={togglePasswordVisibility}>
                                             {showPassword ? <img src="src/assets/icons/clarity_eye-show-line.svg"/> : <img src="src/assets/icons/clarity_eye-hide-solid.svg"/>}
                                         </button>
+                                        <ErrorMessage name="password" component="p" className={styles.error_password} />
 
                                     </div>
-                                    <ErrorMessage name="password" component="div" className={styles.error_password} />
+
                                     <div className={styles.passwordField}>
                                         <Field type={showConfirmPassword ? "text" : "password"} name="confirmPassword" placeholder="Повторите пароль"/>
                                         <button type="button" className={styles.togglePasswordButton} onClick={toggleConfirmPasswordVisibility}>
                                             {showConfirmPassword ? <img src="src/assets/icons/clarity_eye-show-line.svg"/> : <img src="src/assets/icons/clarity_eye-hide-solid.svg"/>}
                                         </button>
+                                        <ErrorMessage name="confirmPassword" component="p" className={styles.error_password}/>
                                     </div>
-                                    <ErrorMessage name="confirmPassword" component="div" className={styles.error_password}/>
+
                                     <button type="submit" disabled={!isValid || !dirty}>Регистрация</button>
-                                    <div>Уже есть аккаунт? <Link to="/login">Войти</Link> </div>
+                                    <p>Уже есть аккаунт? <Link to="/login">Войти</Link> </p>
                                 </div>
                             </Form>
                         </div>

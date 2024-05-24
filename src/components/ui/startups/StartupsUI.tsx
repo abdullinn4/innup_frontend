@@ -40,15 +40,6 @@ export const StartupsUI = () => {
         setFilteredStartups(filtered);
     };
 
-    const chunkArray = (arr: StartupEntity[]) => {
-        const chunks = [];
-        for (let i = 0; i < arr.length; i += 3) {
-            chunks.push(arr.slice(i, i + 3));
-        }
-        return chunks;
-    };
-
-    const startupChunks = chunkArray(filteredStartups);
 
     return (
         <>
@@ -65,13 +56,11 @@ export const StartupsUI = () => {
                 </button>
             </div>
             <div className={style.startups_wrapper}>
-                {startupChunks.map((chunk, index) => (
-                    <div key={index} className={style.startups_row}>
-                        {Array.isArray(chunk) && chunk.map((startup) => (
-                            <StartupCard key={startup.id} startup={startup} />
-                        ))}
-                    </div>
-                ))}
+                <div className={style.startups_row}>
+                    {filteredStartups.map((startup) => (
+                        <StartupCard key={startup.id} startup={startup}/>
+                    ))}
+                </div>
             </div>
         </>
     );

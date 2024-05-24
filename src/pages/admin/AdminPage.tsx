@@ -1,10 +1,10 @@
 import {Footer, Header} from "../../features";
-import {StartupList} from "../../features/ui/admin/StartupList.tsx";
+import {StartupList} from "../../components";
 
 export const AdminPage = () => {
     return(
         <>
-            <Header isUserLoggedIn={true}/>
+            <Header/>
             <StartupList/>
             <Footer/>
         </>

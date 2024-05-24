@@ -10,11 +10,11 @@ export const Startup: React.FC<StartupProfile> = ({ name, description, imgUrl,id
 
 
     return (
-        <div className={style.startup}>
-            <Link to={`/startup/${id}`}>
+        <Link to={`/startup/${id}`}>
+            <div className={style.startup}>
                 <div className={style.startup_info}>
                     <img src={imgUrl} className={style.startup_img} alt={name} />
-                    <div>
+                    <div className={style.startup_info}>
                         <h4>{name}</h4>
                         <p>{description}</p>
                         <button className={style.like_button} onClick={() => handleLikeClick(id, liked, setLiked)}>
@@ -26,8 +26,8 @@ export const Startup: React.FC<StartupProfile> = ({ name, description, imgUrl,id
                         </button>
                     </div>
                 </div>
-            </Link>
-        </div>
+            </div>
+        </Link>
     );
 };
 

@@ -18,18 +18,8 @@ export const ProfileUI: React.FC<ProfileUIProps> = ({userId}) => {
         fetchUserData(userId).then(data => setUserData(data)).catch(error => console.error(error));
         fetchCreatedStartups(userId).then(data => setCreatedStartups(data)).catch(error => console.error(error));
         fetchFavoriteStartups(userId).then(data => setFavoriteStartups(data)).catch(error => console.error(error));
-    }, []);
+    }, [userId]);
 
-    const chunkArray = (arr: any[], size: number) => {
-        const chunks = [];
-        for (let i = 0; i < arr.length; i += size) {
-            chunks.push(arr.slice(i, i + size));
-        }
-        return chunks;
-    };
-
-    const createdStartupChunks = chunkArray(createdStartups, 3);
-    const favoriteStartupChunks = chunkArray(favoriteStartups, 3);
 
     return (
         <main>
@@ -37,24 +27,20 @@ export const ProfileUI: React.FC<ProfileUIProps> = ({userId}) => {
 
             <div className={style.startups_wrapper}>
                 <h2>Создатель</h2>
-                {createdStartupChunks.map((chunk, index) => (
-                    <div key={index} className={style.startups_row}>
-                        {chunk.map(startup => (
-                            <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} imgUrl={startup.imgUrl} />
-                        ))}
-                    </div>
-                ))}
+                <div className={style.startups_row}>
+                    {createdStartups.map(startup => (
+                        <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} imgUrl={startup.imgUrl} />
+                    ))}
+                </div>
             </div>
 
             <div className={style.startups_wrapper}>
                 <h2>Избранное</h2>
-                {favoriteStartupChunks.map((chunk, index) => (
-                    <div key={index} className={style.startups_row}>
-                        {chunk.map(startup => (
-                            <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} imgUrl={startup.imgUrl} />
-                        ))}
-                    </div>
-                ))}
+                <div className={style.startups_row}>
+                    {favoriteStartups.map(startup => (
+                        <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} imgUrl={startup.imgUrl} />
+                    ))}
+                </div>
             </div>
         </main>
     );

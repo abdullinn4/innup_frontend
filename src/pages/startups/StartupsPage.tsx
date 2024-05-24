@@ -1,9 +1,10 @@
-import {Footer, Header, StartupsUI} from "../../features";
+import {Footer, Header} from "../../features";
+import {StartupsUI} from "../../components";
 
 export const StartupsPage = () => {
     return(
         <>
-            <Header isUserLoggedIn={true}/>
+            <Header/>
             <StartupsUI/>
             <Footer/>
         </>
