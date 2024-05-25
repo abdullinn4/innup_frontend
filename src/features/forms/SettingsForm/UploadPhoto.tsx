@@ -2,11 +2,15 @@ import style from "./settings.module.sass";
 import {FileInput} from "../../../shared/FileInput.tsx";
 import {useState} from "react";
 import {handleDeletePhoto, handleUpdatePhoto} from "../../../service";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../app/store.ts";
 
 
 export const UploadPhoto = () => {
     const [avatar,setAvatar] = useState<File | null>(null);
     const[selectedPhoto,setSelectedPhoto] = useState<string | null>(null)
+
+    const user = useSelector((state:RootState) => state.user.user)
     const handleAvatarSelect = (file: File) => {
         setAvatar(file)
         const reader = new FileReader();
@@ -35,13 +39,19 @@ export const UploadPhoto = () => {
         <>
             <h2>Фото профиля</h2>
             <div className={style.avatar_upload_form}>
+                {user && user.photoUrl !== null &&(
+                    <div className={style.selected_photo_container}>
+                        <img src={user.photoUrl} alt="selected avatar" className={style.selected_photo}/>
+                        <button type="submit" onClick={handleDeleteSelectedPhoto} className={style.delete_selected_photo_button}/>
+                    </div>
+                )}
                 {selectedPhoto ? (
                     <div className={style.selected_photo_container}>
                         <img src={selectedPhoto} alt="selected avatar" className={style.selected_photo}/>
                         <button type="submit" onClick={handleDeleteSelectedPhoto} className={style.delete_selected_photo_button}/>
                     </div>
                 ):(
-                    <FileInput onFileSelect={handleAvatarSelect}/>
+                    <FileInput onFileSelect={handleAvatarSelect} />
                 )}
                 <div className={style.button_container}>
                     <button type="submit" onSubmit={handleUpdate} className={style.update_button}>Обновить</button>

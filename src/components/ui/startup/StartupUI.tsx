@@ -6,7 +6,7 @@ import {handleLikeClick} from "../../../shared/LikeClick.tsx";
 import {fetchStartupById, fetchUserData} from "../../../service";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-import {ContactModal} from "./ContactModal.tsx"; // Импортируйте CSS, если он не был импортирован ранее
+import {ContactModal} from "./ContactModal.tsx";
 
 
 export const StartupUI: React.FC = () => {

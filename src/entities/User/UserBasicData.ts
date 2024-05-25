@@ -1,6 +1,8 @@
 export interface UserBasicData{
-    name?: string,
+    name: string,
     aboutMe?: string,
     email: string,
-    photoUrl?: string
+    password: string,
+    photoUrl?: string,
+    role?:string
 }

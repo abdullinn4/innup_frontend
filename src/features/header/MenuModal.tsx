@@ -1,8 +1,10 @@
 import style from "./header.module.sass"
 import {Link} from "react-router-dom";
 import {LogoutForm} from "../../features";
+import {useAuth} from "../user/isAuth.ts";
 
 export const MenuModal= ({onClose} : {onClose :React.MouseEventHandler<HTMLLIElement>}) => {
+    const { isAdmin } = useAuth();
 
     return (
         <div>
@@ -16,6 +18,11 @@ export const MenuModal= ({onClose} : {onClose :React.MouseEventHandler<HTMLLIEle
                 <li onClick={onClose}>
                     <Link to="/settings" className={style.menu_modal_links}>Настройки</Link>
                 </li>
+                {isAdmin && (
+                    <li onClick={onClose}>
+                        <Link to="/admin/startups" className={style.menu_modal_links}>Админ</Link>
+                    </li>
+                )}
                 <li>
                     <LogoutForm/>
                 </li>

@@ -13,10 +13,9 @@ export const RegistrationForm = () => {
 
     const{errorMessage, handleSubmitSignup} = useSignup()
 
-    const initialValues: UserSignup = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
+    const initialValues: UserSignup = {name: '', email: '', password: '', confirmPassword: ''};
     const validationSchema = Yup.object({
-        firstName: Yup.string().required('Обязательное поле'),
-        lastName: Yup.string().required('Обязательное поле'),
+        name: Yup.string().required('Обязательное поле'),
         email: Yup.string().email('Неверный адрес почты').required('Обязательное поле'),
         password: Yup.string().matches(
             /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
@@ -47,12 +46,8 @@ export const RegistrationForm = () => {
                                     {errorMessage && <div style={{color: 'red'}}>
                                         {errorMessage}</div>}
                                     <div>
-                                        <Field type="text" name="firstName" placeholder="Введите имя"/>
-                                        <ErrorMessage name="firstName" component="p" className={styles.error}/>
-                                    </div>
-                                    <div>
-                                        <Field type="text" name="lastName" placeholder="Введите фамилию"/>
-                                        <ErrorMessage name="lastName" component="p" className={styles.error}/>
+                                        <Field type="text" name="name" placeholder="Введите имя"/>
+                                        <ErrorMessage name="name" component="p" className={styles.error}/>
                                     </div>
                                     <div>
                                         <Field type="email" name="email" placeholder="Введите почту"/>

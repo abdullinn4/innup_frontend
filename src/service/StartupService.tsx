@@ -1,5 +1,5 @@
 import axios from "axios";
-import { StartupEntity } from "../entities";
+import {StartupEntity, StartupProfile} from "../entities";
 
 export const fetchStartups = async (): Promise<StartupEntity[]> => {
     try {
@@ -23,6 +23,15 @@ export const updateLikeStatus = async (startupId: string, liked: boolean): Promi
 export const fetchStartupById = async (id: string): Promise<StartupEntity> => {
     try {
         const response = await axios.get<StartupEntity>(`http://localhost:5294/api/Startup/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching startup:', error);
+        throw error;
+    }
+}
+export const fetchStartupsByCategory = async (category: string | undefined): Promise<StartupProfile[]> => {
+    try {
+        const response = await axios.get<StartupProfile[]>(`http://localhost:5294/api/Categories/${category}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching startup:', error);

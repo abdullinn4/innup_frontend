@@ -14,7 +14,7 @@ export const HeaderGuest = () => {
                             <Link to="/startups">Главная</Link>
                         </li>
                         <li>
-                            <Link to="#">Категории</Link>
+                            <Link to="/categories">Категории</Link>
                         </li>
                         <li>
                             <Link to="#">О платформе</Link>
@@ -26,7 +26,7 @@ export const HeaderGuest = () => {
                             <Link to="/create-startup">Опубликовать проект</Link>
                         </li>
                         <li>
-                            <Link to="#">Войти</Link>
+                            <Link to="/login">Войти</Link>
                         </li>
                     </ul>
                 </nav>

@@ -7,6 +7,7 @@ import {StartupsPage} from "../pages/startups";
 import {ProfilePage} from "../pages/profile";
 import {StartupPage} from "../pages/startup";
 import {AdminPage} from "../pages/admin";
+import {CategoryPage, StartupsByCategoryPage} from "../pages/category";
 
 
 const AppRouter = () =>{
@@ -20,6 +21,8 @@ const AppRouter = () =>{
             <Route path="/profile/:id" element={<ProfilePage/>}/>
             <Route path="/startup/:id" element={<StartupPage/>}/>
             <Route path="/admin/startups" element={<AdminPage/>}/>
+            <Route path="/categories" element={<CategoryPage/>}/>
+            <Route path="/categories/:category" element={<StartupsByCategoryPage/>}/>
         </Routes>
     )
 }
