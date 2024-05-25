@@ -1,0 +1,1 @@
+export {MyStartupsPage} from './MyStartupsPage.tsx'

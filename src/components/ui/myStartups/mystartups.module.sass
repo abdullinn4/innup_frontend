@@ -1,43 +1,16 @@
-.profile_wrapper
+@import "src/styles/colors"
+
+.my_startups_wrapper
   display: flex
   flex-direction: column
   padding: 52px
   justify-content: center
   align-items: center
 
-.profile_wrapper h1
+.my_startups_wrapper h1
   display: flex
   justify-content: center
   align-items: center
-
-.profile_data
-  display: flex
-
-.profile_data p
-  font-size: 18px
-  padding: 0
-  margin: 0
-
-.profile_data h2
-  margin-bottom: 5px
-
-.profile_photo
-  height: 150px
-  width: 150px
-
-.text_info
-  display: flex
-  padding-top: 20px
-  flex-direction: column
-
-.profile_about_me
-  display: flex
-  align-items: center
-  gap: 5px
-  padding-left: 20px
-
-.profile_about_me p
-  padding-top: 2px
 
 .startups_wrapper
   display: flex
@@ -90,4 +63,37 @@
     margin: 0
     padding: 0
 
+.startups_column
+  display: flex
+  flex-direction: column
+  gap: 20px
 
+.startup_container
+  padding: 10px 10px 15px 10px
+  border-bottom: 1px solid #f3efef
+  text-align: center
+
+  a
+    text-decoration: none
+    color: black
+    display: block
+    width: 100%
+
+  a:hover
+    outline: black
+
+.create_startup_button
+  border: 2px solid $c-blue-color
+  height: 30px
+  width: 100%
+  padding: 5px
+  background-color: $c-base-color
+  border-radius: 21px
+  color: $c-blue-color
+  font-size: 15px
+  justify-content: center
+  align-items: center
+
+.create_startup_button:hover
+  background: $c-blue-color
+  color: $c-base-color

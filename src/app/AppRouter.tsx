@@ -8,6 +8,7 @@ import {ProfilePage} from "../pages/profile";
 import {StartupPage} from "../pages/startup";
 import {AdminPage} from "../pages/admin";
 import {CategoryPage, StartupsByCategoryPage} from "../pages/category";
+import {MyStartupsPage} from "../pages/mystartups";
 
 
 const AppRouter = () =>{
@@ -23,6 +24,7 @@ const AppRouter = () =>{
             <Route path="/admin/startups" element={<AdminPage/>}/>
             <Route path="/categories" element={<CategoryPage/>}/>
             <Route path="/categories/:category" element={<StartupsByCategoryPage/>}/>
+            <Route path="/mystartups/:id" element={<MyStartupsPage/>}/>
         </Routes>
     )
 }

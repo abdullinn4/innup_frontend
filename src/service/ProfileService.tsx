@@ -23,6 +23,7 @@ export const fetchCreatedStartups = async (userId: string): Promise<StartupProfi
     }
 };
 
+
 export const fetchFavoriteStartups = async (userId: string): Promise<StartupProfile[]> => {
     try {
         const response = await axios.get(`${API_URL}/Startup/Favorites/${userId}`);
