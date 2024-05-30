@@ -1,7 +1,9 @@
 import {useState} from "react";
 import style from "./settings.module.sass";
 import {handleDeleteAccount} from "../../../service";
+import {useNavigate} from "react-router-dom";
 export const DeleteAccount = () => {
+    const navigate = useNavigate();
     const[showModal,setShowModal] = useState(false)
 
     return(
@@ -15,7 +17,7 @@ export const DeleteAccount = () => {
                 <div className={style.delete_account_modal}>
                     <p>Вы уверены, что хотите удалить аккаунт?</p>
                     <div className={style.modal_buttons_container}>
-                        <button type="submit" onClick={handleDeleteAccount} className={style.modal_button}>Да</button>
+                        <button type="submit" onClick={() => handleDeleteAccount(navigate)} className={style.modal_button}>Да</button>
                         <button type="submit" onClick={() => setShowModal(false)} className={style.modal_button}>Нет</button>
                     </div>
                 </div>

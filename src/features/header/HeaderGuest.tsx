@@ -20,9 +20,6 @@ export const HeaderGuest = () => {
                             <Link to="#">О платформе</Link>
                         </li>
                         <li>
-                            <Link to="#">Чат</Link>
-                        </li>
-                        <li>
                             <Link to="/create-startup">Опубликовать проект</Link>
                         </li>
                         <li>

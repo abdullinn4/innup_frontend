@@ -8,10 +8,9 @@ interface ContactModalProps {
     onRequestClose: () => void;
     onCall: () => void;
     onEmail: () => void;
-    onChat: () => void;
 }
 
-export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onRequestClose, onCall, onEmail, onChat }) => {
+export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onRequestClose, onCall, onEmail }) => {
     return (
         <Modal isOpen={isOpen} onRequestClose={onRequestClose} className={style.custom_modal} overlayClassName={style.custom_overlay}>
             <div className={style.modal_header}>
@@ -21,7 +20,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onRequestClo
             <div className={style.modal_content}>
                 <button className={style.contact_button} onClick={onCall}>Позвонить</button>
                 <button className={style.contact_button} onClick={onEmail}>Написать письмо</button>
-                <button className={style.contact_button} onClick={onChat}>Чат</button>
             </div>
         </Modal>
     );

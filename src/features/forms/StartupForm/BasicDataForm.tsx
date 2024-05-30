@@ -12,7 +12,7 @@ export const BasicDataForm = () => {
             <Field type="text" name="slogan" className={style.basic_data_slogan_input} />
             <ErrorMessage name="slogan" component="div" className={style.error} />
 
-            <p>Веб-сайт</p>
+            <p>Веб-сайт (При наличии)</p>
             <Field type="url" name="webSite" className={style.basic_data_inputs} />
             <ErrorMessage name="webSite" component="div" className={style.error} />
 

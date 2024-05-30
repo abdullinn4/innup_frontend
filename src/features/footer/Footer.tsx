@@ -12,17 +12,12 @@ export const Footer = () => {
                     <nav className={style.footer_navigation}>
                         <ul>
                             <li>
-                                <Link to="">Главная</Link>
+                                <Link to="/startups">Главная</Link>
                             </li>
                         </ul>
                         <ul>
                             <li>
-                                <Link to="">Стартапы</Link>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <Link to="">Категории</Link>
+                                <Link to="/categories">Категории</Link>
                             </li>
                         </ul>
                         <ul>

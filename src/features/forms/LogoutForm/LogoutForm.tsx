@@ -3,8 +3,10 @@ import { useState } from 'react';
 import style from './logout.module.sass';
 import { logoutUser } from '../../user/userSlice';
 import {AppDispatch} from "../../../app/store.ts";
+import {useNavigate} from "react-router-dom";
 
 export const LogoutForm = () => {
+    const navigate = useNavigate();
     const dispatch:AppDispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
 
@@ -13,6 +15,7 @@ export const LogoutForm = () => {
             await dispatch(logoutUser()).unwrap();
             console.log('Выход совершен успешно');
             setShowModal(false);
+            navigate("/startups")
         } catch (error) {
             console.error('Ошибка при выходе из аккаунта', error);
         }

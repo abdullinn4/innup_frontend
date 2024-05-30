@@ -8,15 +8,20 @@ import style from './profile.module.sass';
 interface ProfileUIProps {
     userId: string;
 }
-
+interface StartupProfileWithStatus extends StartupProfile {
+    status: 'В обработке' | 'Принято' | 'Отклонено';
+}
 export const ProfileUI: React.FC<ProfileUIProps> = ({userId}) => {
     const [userData, setUserData] = useState<UserBasicData | null>(null);
-    const [createdStartups, setCreatedStartups] = useState<StartupProfile[]>([]);
     const [favoriteStartups, setFavoriteStartups] = useState<StartupProfile[]>([]);
+    const [acceptedStartups, setAcceptedStartups] = useState<StartupProfileWithStatus[]>([]);
+
 
     useEffect(() => {
         fetchUserData(userId).then(data => setUserData(data)).catch(error => console.error(error));
-        fetchCreatedStartups(userId).then(data => setCreatedStartups(data)).catch(error => console.error(error));
+        fetchCreatedStartups(userId).then(data => {
+            const startupsWithStatus = data as StartupProfileWithStatus[]; // Приведение типа, если нужно
+            setAcceptedStartups(startupsWithStatus.filter(startup => startup.status === 'Принято'))});
         fetchFavoriteStartups(userId).then(data => setFavoriteStartups(data)).catch(error => console.error(error));
     }, [userId]);
 
@@ -28,7 +33,7 @@ export const ProfileUI: React.FC<ProfileUIProps> = ({userId}) => {
             <div className={style.startups_wrapper}>
                 <h2>Создатель</h2>
                 <div className={style.startups_row}>
-                    {createdStartups.map(startup => (
+                    {acceptedStartups.map(startup => (
                         <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} imgUrl={startup.imgUrl} />
                     ))}
                 </div>

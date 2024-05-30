@@ -2,7 +2,7 @@ import axios from 'axios';
 import {StartupProfile, UserBasicData} from "../entities";
 
 const API_URL = 'http://localhost:5294/api/Profile';
-
+//получение по id юзера базовой инфы о юзере типа UserBasicData
 export const fetchUserData = async (userId: string): Promise<UserBasicData> => {
     try {
         const response = await axios.get(`${API_URL}/User/Fetch/${userId}`);
@@ -12,7 +12,7 @@ export const fetchUserData = async (userId: string): Promise<UserBasicData> => {
         throw error;
     }
 };
-
+//получение по id юзера его созданные стартапы типа StartupProfile[], любого статуса
 export const fetchCreatedStartups = async (userId: string): Promise<StartupProfile[]> => {
     try {
         const response = await axios.get(`${API_URL}/Startup/Created/${userId}`);
@@ -23,7 +23,7 @@ export const fetchCreatedStartups = async (userId: string): Promise<StartupProfi
     }
 };
 
-
+//получение по id юзера его избранные стартапы типа StartupProfile[]
 export const fetchFavoriteStartups = async (userId: string): Promise<StartupProfile[]> => {
     try {
         const response = await axios.get(`${API_URL}/Startup/Favorites/${userId}`);

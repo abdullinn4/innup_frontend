@@ -1,9 +1,11 @@
 import style from "./startupform.module.sass";
-import { Field, ErrorMessage, useFormikContext } from 'formik';
+import {Field, ErrorMessage, useFormikContext, FormikProps} from 'formik';
+import {StartupDto} from "../../../entities";
+import React from "react";
 
 
 export const Contacts = () => {
-    const { setFieldValue } = useFormikContext();
+    const { setFieldValue }: FormikProps<StartupDto> = useFormikContext<StartupDto>();
 
     const handlePhoneInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;

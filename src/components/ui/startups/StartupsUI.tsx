@@ -1,8 +1,12 @@
 import { StartupEntity } from "../../../entities";
 import { StartupCard } from "./StartupCard.tsx";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from './startups.module.sass';
+import style1 from '../category/category.module.sass'
 import { fetchStartups } from "../../../service";
+import {trendOptions} from "../../../features/forms/StartupForm/CategoryOptions.ts";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Link} from "react-router-dom";
 
 export const StartupsUI = () => {
     const [startups, setStartups] = useState<StartupEntity[]>([]);
@@ -54,6 +58,14 @@ export const StartupsUI = () => {
                 <button className={style.search_button} onClick={handleSearchClick}>
                     <img src="src/assets/icons/search-icon.svg" alt="Search" className={style.search_icon}/>
                 </button>
+            </div>
+            <h3 className={style.title_h3}>Трендовые категории</h3>
+            <div className={style.category_row}>
+                {trendOptions.map((category) => (
+                    <div className={style1.category_container} key={category.value}>
+                        <FontAwesomeIcon icon={category.icon} /><Link  to={`/categories/${category.id}`}>{category.label}</Link>
+                    </div>
+                ))}
             </div>
             <div className={style.startups_wrapper}>
                 <div className={style.startups_row}>

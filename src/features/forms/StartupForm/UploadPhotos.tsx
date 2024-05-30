@@ -1,19 +1,18 @@
 import { FileInput } from "../../../shared/FileInput.tsx";
 import style from "./startupform.module.sass";
 import { useState } from "react";
-import {useFormikContext } from "formik";
+import {FormikProps, useFormikContext} from "formik";
+import {StartupDto} from "../../../entities";
 
 export const UploadPhotos = () => {
-    const { setFieldValue, errors, touched } = useFormikContext<any>();
+    const { setFieldValue, errors, touched } : FormikProps<StartupDto>= useFormikContext<StartupDto>();
 
-    const [mainPhoto, setMainPhoto] = useState<File | null>(null);
     const [selectedMainPhoto, setSelectedMainPhoto] = useState<string | null>(null);
 
     const [additionalPhotos, setAdditionalPhotos] = useState<File[]>([]);
     const [selectedAdditionalPhotos, setSelectedAdditionalPhotos] = useState<string[]>([]);
 
     const handleMainPhoto = (file: File) => {
-        setMainPhoto(file);
         setFieldValue("mainPhoto", file);
         const reader = new FileReader();
         reader.onload = () => {
@@ -23,9 +22,8 @@ export const UploadPhotos = () => {
     };
 
     const handleDeleteSelectedMainPhoto = () => {
-        setMainPhoto(null);
-        setSelectedMainPhoto(null);
         setFieldValue("mainPhoto", null);
+        setSelectedMainPhoto(null);
     };
 
     const handleAdditionalPhotos = (file: File) => {
@@ -75,7 +73,18 @@ export const UploadPhotos = () => {
                     ))}
                     <FileInput onFileSelect={handleAdditionalPhotos} />
                 </div>
-                {touched.additionalPhotos && errors.additionalPhotos && <div className={style.error}>{errors.additionalPhotos}</div>}
+                {touched.additionalPhotos && (
+                    <div className={style.error}>
+                        {Array.isArray(errors.additionalPhotos) ? (
+                            errors.additionalPhotos.map((error, index) => (
+                                <div key={index}>{typeof error === 'string' ? error : Object.values(error).join(', ')}</div>
+                            ))
+                        ) : (
+                            <div>{errors.additionalPhotos}</div>
+                        )}
+                    </div>
+                )}
+
             </div>
         </>
     );

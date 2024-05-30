@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchCreatedStartups } from "../../../service";
-import style from '../profile/profile.module.sass'
+import style from './mystartups.module.sass'
 import {StartupProfile} from "../../../entities";
 import {Startup} from "../profile/Startup.tsx";
 import {Link} from "react-router-dom";
@@ -29,10 +29,13 @@ export const MyStartupsUI: React.FC<MyStartupsUIProps> = ({ userId }) => {
 
     return (
         <main className={style.my_startups_wrapper}>
-            <h1>Мои стартапы</h1>
+
+            <div className={style.my_startups_wrapper_header}>
+                <h1>Мои стартапы</h1>
+                <Link to="/create-startup" className={style.create_startup_button}>Опубликовать проект</Link>
+            </div>
 
             <div className={style.startups_wrapper}>
-                <h1>Мои стартапы</h1>
                 <div className={style.startups_row}>
                     {acceptedStartups.map(startup => (
                         <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} imgUrl={startup.imgUrl} />
@@ -40,7 +43,6 @@ export const MyStartupsUI: React.FC<MyStartupsUIProps> = ({ userId }) => {
                 </div>
             </div>
 
-            <Link to="/create-startup" className={style.create_startup_button}>Опубликовать проект</Link>
 
             <div className={style.startups_wrapper}>
                 <h2>В обработке</h2>

@@ -1,17 +1,17 @@
 import style from "./startupform.module.sass";
 import { BasicDataForm } from "./BasicDataForm.tsx";
 import { CategoryForm } from "./CategoryForm.tsx";
-import { Form, Formik } from "formik";
+import {Form, Formik} from "formik";
 import * as Yup from "yup";
 import { UploadPhotos } from "./UploadPhotos.tsx";
 import { Contacts } from "./Contacts.tsx";
-import { handleCreateStartup } from "../../../service";
+import {handleCreateStartup, uploadStartupPhotos} from "../../../service";
 import { StartupDto } from "../../../entities";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required("Обязательно"),
     slogan: Yup.string().required("Обязательно"),
-    webSite: Yup.string().url("Некорректный URL").required("Обязательно"),
+    webSite: Yup.string().url("Некорректный URL"),
     description: Yup.string().required("Обязательно"),
     category: Yup.string().required("Обязательно"),
     email: Yup.string().email("Некорректная почта").required("Обязательно"),
@@ -35,30 +35,19 @@ export const StartupForm = () => {
         additionalPhotos: []
     };
 
-    const handleSubmit = async (values: StartupDto, { setSubmitting }: any) => {
-        const formData = new FormData();
-        formData.append('name', values.name);
-        formData.append('slogan', values.slogan);
-        formData.append('webSite', values.webSite);
-        formData.append('description', values.description);
-        formData.append('category', values.category);
-        formData.append('email', values.email);
-        formData.append('phone', values.phone);
-        formData.append('price', values.price);
-
-        if (values.mainPhoto) {
-            formData.append('mainPhoto', values.mainPhoto);
-        }
-
-        values.additionalPhotos.forEach((photo: File, index: number) => {
-            formData.append(`additionalPhoto${index}`, photo);
-        });
-
+    const handleSubmit = async (values: StartupDto, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
         try {
-            const response = await handleCreateStartup(formData);
-            console.log('Форма успешно отправлена:', response);
+            // Отправка данных о стартапе
+            const createdStartup = await handleCreateStartup(values);
+
+            // Отправка фотографий стартапа, если они есть
+            if (values.additionalPhotos.length > 0 && createdStartup.id) {
+                await uploadStartupPhotos(createdStartup.id, values.additionalPhotos);
+            }
+
+            console.log('Стартап успешно создан:', createdStartup);
         } catch (error) {
-            console.error('Ошибка при отправке формы:', error);
+            console.error('Ошибка при создании стартапа:', error);
         } finally {
             setSubmitting(false);
         }

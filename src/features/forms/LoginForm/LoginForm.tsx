@@ -4,11 +4,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useState } from "react";
 import styles from '../RegistrationForm/registration.module.sass';
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {AppDispatch} from "../../../app/store.ts";
 
 export const LoginForm = () => {
     const dispatch: AppDispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -28,6 +29,7 @@ export const LoginForm = () => {
             const resultAction = await dispatch(loginUser(values));
             if (loginUser.fulfilled.match(resultAction)) {
                 console.log('Login successful:', resultAction.payload);
+                navigate('/startups')
             } else {
                 if (resultAction.payload) {
                     setErrorMessage('Неправильный email или пароль');
@@ -72,9 +74,9 @@ export const LoginForm = () => {
                                     onClick={togglePasswordVisibility}
                                 >
                                     {showPassword ? (
-                                        <img src="src/assets/icons/clarity_eye-show-line.svg" />
+                                        <img src="src/assets/icons/clarity_eye-show-line.svg"  alt=""/>
                                     ) : (
-                                        <img src="src/assets/icons/clarity_eye-hide-solid.svg" />
+                                        <img src="src/assets/icons/clarity_eye-hide-solid.svg"  alt=""/>
                                     )}
                                 </button>
                             </div>

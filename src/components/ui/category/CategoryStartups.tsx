@@ -3,21 +3,32 @@ import React, {useEffect, useState} from "react";
 import {StartupProfile} from "../../../entities";
 import { fetchStartupsByCategory} from "../../../service";
 import style from "../profile/profile.module.sass";
+import style1 from './category.module.sass'
 import {useParams} from "react-router-dom";
+import {options} from "../../../features/forms/StartupForm/CategoryOptions.ts";
 
 
 export const CategoryStartups: React.FC = () => {
-    const { category } = useParams<{ category: string }>();
+    const { category } = useParams<{ category?: string }>();
     const [categoryStartups,setCategoryStartups] = useState<StartupProfile[]>([]);
+    const [categoryName, setCategoryName] = useState<string>("");
 
-    useEffect(()=>{
-        fetchStartupsByCategory(category).then(data => setCategoryStartups(data)).catch(error => console.error(error));
-    },[category])
+    useEffect(() => {
+        if (category) {
+            const selectedCategory = options.find(opt => opt.id === parseInt(category));
+            if (selectedCategory) {
+                setCategoryName(selectedCategory.label);
+                fetchStartupsByCategory(selectedCategory.label)
+                    .then(data => setCategoryStartups(data))
+                    .catch(error => console.error(error));
+            }
+        }
+    }, [category]);
 
 
     return (
-        <div className={style.category_wrapper}>
-            <h2>Стартапы в категории: {category}</h2>
+        <main className={style1.category_wrapper}>
+            <h2>Стартапы в категории: {categoryName}</h2>
             <div className={style.startups_wrapper}>
                 <div className={style.startups_row}>
                     {categoryStartups.map(startup => (
@@ -25,6 +36,6 @@ export const CategoryStartups: React.FC = () => {
                     ))}
                 </div>
             </div>
-        </div>
+        </main>
     );
 };
