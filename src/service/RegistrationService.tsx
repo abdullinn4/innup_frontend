@@ -11,8 +11,7 @@ export const useSignup = () => {
             const response = await axios.post<UserSignup>('http://localhost:5294/api/User/Create',{
                 email: values.email,
                 password: values.password,
-                name: values.name,
-                confirmPassword: values.confirmPassword
+                firstname: values.name
             });
             console.log(response.data);
             navigate('/login')
