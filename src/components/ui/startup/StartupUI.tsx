@@ -34,10 +34,14 @@ export const StartupUI: React.FC = () => {
         }
     }, [startup]);
 
+    // const images = startup ? [
+    //     {original: startup?.mainPhotoPath},
+    //     ...startup.additionalPhotosUrl.map(url => ({original: url}))
+    // ]:[];
     const images = startup ? [
-        {original: startup?.mainPhotoUrl},
-        ...startup.additionalPhotosUrl.map(url => ({original: url}))
-    ]:[];
+        { original: startup?.mainPhotoPath ? `http://localhost:5294/startupPhotos/${startup.mainPhotoPath}` : '' },
+        ...startup.additionalPhotosPaths.map(url => ({ original: url ? `http://localhost:5294/startupPhotos/${url}` : '' }))
+    ] : [];
 
     return(
         <>
@@ -86,7 +90,7 @@ export const StartupUI: React.FC = () => {
             </div>
             <div className={style.additional_startup_info_wrapper}>
                 <img src="src/assets/icons/calendar-icon.svg" className={style.user_icon} alt="calender icon"/>
-                <p>Добавлено {startup?.createDate}</p>
+                {/* <p>Добавлено {startup?.createDate}</p> */}
                 <img src="src/assets/icons/category-icon.svg" className={style.user_icon} alt="category icon"/>
                 <p className={style.category}>{startup?.category}</p>
             </div>

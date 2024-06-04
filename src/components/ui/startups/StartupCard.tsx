@@ -9,12 +9,12 @@ interface StartupProps{
 }
 export const StartupCard: React.FC<StartupProps> = ({startup}) => {
     const[liked,setLiked] = useState(false);
-
+    const serverUrl = "http://localhost:5294/startupPhotos";
 
     return(
         <Link to={`/startup/${startup.id}`}>
             <div className={style.startup}>
-                <img src={startup.mainPhotoUrl} alt={startup.name} className={style.startup_img} />
+                <img src={`${serverUrl}/${startup.mainPhotoPath}`} alt={startup.name} className={style.startup_img} />
                 <div className={style.startup_info}>
                     <h4>{startup.name}</h4>
                     <p>{startup.slogan}</p>

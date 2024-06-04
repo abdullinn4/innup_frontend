@@ -1,11 +1,11 @@
 import {Footer, Header} from "../../features";
-import {StartupsUI} from "../../components";
+import {StartupUI} from "../../components";
 
 export const StartupPage = () => {
     return(
         <>
             <Header/>
-            <StartupsUI/>
+            <StartupUI/>
             <Footer/>
         </>
     )

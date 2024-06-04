@@ -3,7 +3,7 @@ import {StartupEntity, StartupProfile} from "../entities";
 //Получение всех стартапов для главной страницы, но статус у каждого стартапа = Принято
 export const fetchStartups = async (): Promise<StartupEntity[]> => {
     try {
-        const response = await axios.get<StartupEntity[]>('http://localhost:5294/api/Startups/Fetch');
+        const response = await axios.get<StartupEntity[]>('http://localhost:5294/api/Startup/Fetch');
         return response.data;
     } catch (e) {
         console.error(e);
@@ -23,7 +23,7 @@ export const updateLikeStatus = async (startupId: string, liked: boolean): Promi
 //Достаем стартап по его айдишнику
 export const fetchStartupById = async (id: string): Promise<StartupEntity> => {
     try {
-        const response = await axios.get<StartupEntity>(`http://localhost:5294/api/Startup/${id}`);
+        const response = await axios.get<StartupEntity>(`http://localhost:5294/api/Startup/Get/${id}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching startup:', error);

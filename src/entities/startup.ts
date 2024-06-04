@@ -20,11 +20,11 @@ export interface StartupEntity{
     category: string;
     email: string;
     phone: string;
-    mainPhotoUrl: string;
-    additionalPhotosUrl: string[];
-    createDate: string;
+    mainPhotoPath: string;
+    additionalPhotosPaths: string[];
+    //createDate: string;
     userId: string;
-    status: 'В обработке' | 'Принято' | 'Отклонено';
+    //status: 'В обработке' | 'Принято' | 'Отклонено';
 }
 export interface StartupProfile{
     id: string;
