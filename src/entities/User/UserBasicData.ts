@@ -1,4 +1,5 @@
 export interface UserBasicData{
+    id?: string,
     name: string,
     aboutMe?: string,
     email: string,

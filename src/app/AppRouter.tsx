@@ -24,7 +24,7 @@ const AppRouter = () =>{
             <Route path="/admin/startups" element={<AdminPage/>}/>
             <Route path="/categories" element={<CategoryPage/>}/>
             <Route path="/categories/:category" element={<StartupsByCategoryPage/>}/>
-            <Route path="/mystartups/:id" element={<MyStartupsPage/>}/>
+            <Route path="/mystartups" element={<MyStartupsPage/>}/>
         </Routes>
     )
 }

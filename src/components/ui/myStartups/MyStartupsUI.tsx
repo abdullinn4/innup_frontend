@@ -4,6 +4,8 @@ import style from './mystartups.module.sass'
 import {StartupProfile} from "../../../entities";
 import {Startup} from "../profile/Startup.tsx";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../app/store.ts";
 interface StartupProfileWithStatus extends StartupProfile {
     status: 'В обработке' | 'Принято' | 'Отклонено';
 }
@@ -12,19 +14,21 @@ interface MyStartupsUIProps {
     userId: string;
 }
 
-export const MyStartupsUI: React.FC<MyStartupsUIProps> = ({ userId }) => {
+export const MyStartupsUI: React.FC<MyStartupsUIProps> = () => {
+    const user = useSelector((state:RootState) => state.user.user)
+
     const [inProgressStartups, setInProgressStartups] = useState<StartupProfileWithStatus[]>([]);
     const [acceptedStartups, setAcceptedStartups] = useState<StartupProfileWithStatus[]>([]);
     const [rejectedStartups, setRejectedStartups] = useState<StartupProfileWithStatus[]>([]);
 
     useEffect(() => {
-        fetchCreatedStartups(userId).then(data => {
+        fetchCreatedStartups(user.id).then(data => {
             const startupsWithStatus = data as StartupProfileWithStatus[]; // Приведение типа, если нужно
             setInProgressStartups(startupsWithStatus.filter(startup => startup.status === 'В обработке'));
             setAcceptedStartups(startupsWithStatus.filter(startup => startup.status === 'Принято'));
             setRejectedStartups(startupsWithStatus.filter(startup => startup.status === 'Отклонено'));
         }).catch(error => console.error(error));
-    }, [userId]);
+    }, [user.id]);
 
 
     return (
