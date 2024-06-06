@@ -7,6 +7,7 @@ import { UploadPhotos } from "./UploadPhotos.tsx";
 import { Contacts } from "./Contacts.tsx";
 import { handleCreateStartup } from "../../../service";
 import { StartupDto } from "../../../entities";
+import {useNavigate} from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required("Обязательно"),
@@ -22,6 +23,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export const StartupForm = () => {
+    const navigate = useNavigate();
     const initialValues: StartupDto = {
         name: '',
         slogan: '',
@@ -57,6 +59,7 @@ export const StartupForm = () => {
         try {
             const response = await handleCreateStartup(formData);
             console.log('Форма успешно отправлена:', response);
+            navigate("/startups")
         } catch (error) {
             console.error('Ошибка при отправке формы:', error);
         } finally {
