@@ -28,6 +28,6 @@ export interface StartupEntity{
 export interface StartupProfile{
     id: string;
     name: string;
-    description: string;
+    slogan: string;
     mainPhotoPath: string;
 }

@@ -5,7 +5,7 @@ import style from './profile.module.sass';
 import {handleLikeClick} from "../../../shared/LikeClick.tsx";
 
 
-export const Startup: React.FC<StartupProfile> = ({ name, description, imgUrl,id }) => {
+export const Startup: React.FC<StartupProfile> = ({ name, slogan, imgUrl,id }) => {
     const[liked,setLiked] = useState(false);
 
 
@@ -16,10 +16,10 @@ export const Startup: React.FC<StartupProfile> = ({ name, description, imgUrl,id
                     <img src={imgUrl} className={style.startup_img} alt={name} />
                     <div className={style.startup_info}>
                         <h4>{name}</h4>
-                        <p>{description}</p>
+                        <p>{slogan}</p>
                         <button className={style.like_button} onClick={() => handleLikeClick(id, liked, setLiked)}>
                             <img
-                                src={liked ? "src/assets/icons/dark-like-icon.svg" : "src/assets/icons/like-icon.svg" }
+                                src={liked ? "/icons/dark-like-icon.svg" : "/icons/like-icon.svg" }
                                 alt="Add/Remove to favorites"
                                 className={style.like_icon}
                             />

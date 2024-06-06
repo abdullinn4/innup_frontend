@@ -31,7 +31,7 @@ export const CategoryStartups: React.FC = () => {
             <div className={style.startups_wrapper}>
                 <div className={style.startups_row}>
                     {categoryStartups.map(startup => (
-                        <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} imgUrl={`http://localhost:5294/startupPhotos/${startup.mainPhotoPath}`} />
+                        <Startup key={startup.id} id={startup.id} name={startup.name} slogan={startup.slogan} imgUrl={`http://localhost:5294/startupPhotos/${startup.mainPhotoPath}`} />
                     ))}
                 </div>
             </div>

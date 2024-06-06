@@ -32,13 +32,13 @@ export const ProfileUI: React.FC<ProfileUIProps> = ({userId}) => {
 
             {acceptedStartups.length > 0 && (    <div className={style.startups_wrapper}>
         <h2>Создатель</h2>        <div className={style.startups_row}>
-            {acceptedStartups.map(startup => (                <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} mainPhotoPath={startup.mainPhotoPath} />
+            {acceptedStartups.map(startup => (                <Startup key={startup.id} id={startup.id} name={startup.name} slogan={startup.slogan} mainPhotoPath={startup.mainPhotoPath} />
             ))}        </div>
     </div>)}
 {favoriteStartups.length > 0 && (
     <div className={style.startups_wrapper}>        <h2>Избранное</h2>
         <div className={style.startups_row}>            {favoriteStartups.map(startup => (
-                <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} mainPhotoPath={startup.mainPhotoPath} />            ))}
+                <Startup key={startup.id} id={startup.id} name={startup.name} slogan={startup.slogan} mainPhotoPath={startup.mainPhotoPath} />            ))}
         </div>    </div>
 )}
         </main>
