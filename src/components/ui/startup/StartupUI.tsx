@@ -39,8 +39,8 @@ export const StartupUI: React.FC = () => {
     }, [startup]);
 
     const images = startup ? [
-        { original: startup?.mainPhotoPath ? `http://localhost:5294/startupPhotos/${startup.mainPhotoPath}` : '' },
-        ...startup.additionalPhotosPaths.map(url => ({ original: url ? `http://localhost:5294/startupPhotos/${url}` : '' }))
+        { original: startup.mainPhotoPath ? `http://localhost:5294/startupPhotos/${startup.mainPhotoPath}` : '' },
+        ...startup.additionalPhotosPaths.map(path => ({ original: path ? `http://localhost:5294/startupPhotos/${path}` : '' }))
     ] : [];
 
     return (

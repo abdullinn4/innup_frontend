@@ -30,23 +30,17 @@ export const ProfileUI: React.FC<ProfileUIProps> = ({userId}) => {
         <main>
             {userData && <User userData={userData} />}
 
-            <div className={style.startups_wrapper}>
-                <h2>Создатель</h2>
-                <div className={style.startups_row}>
-                    {acceptedStartups.map(startup => (
-                        <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} imgUrl={startup.imgUrl} />
-                    ))}
-                </div>
-            </div>
-
-            <div className={style.startups_wrapper}>
-                <h2>Избранное</h2>
-                <div className={style.startups_row}>
-                    {favoriteStartups.map(startup => (
-                        <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} imgUrl={startup.imgUrl} />
-                    ))}
-                </div>
-            </div>
+            {acceptedStartups.length > 0 && (    <div className={style.startups_wrapper}>
+        <h2>Создатель</h2>        <div className={style.startups_row}>
+            {acceptedStartups.map(startup => (                <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} mainPhotoPath={startup.mainPhotoPath} />
+            ))}        </div>
+    </div>)}
+{favoriteStartups.length > 0 && (
+    <div className={style.startups_wrapper}>        <h2>Избранное</h2>
+        <div className={style.startups_row}>            {favoriteStartups.map(startup => (
+                <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} mainPhotoPath={startup.mainPhotoPath} />            ))}
+        </div>    </div>
+)}
         </main>
     );
 };

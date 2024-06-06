@@ -12,7 +12,7 @@ export const User: React.FC<Props> = ({ userData }) => {
             <h1>Профиль</h1>
             <div className={style.profile_data}>
                 <img
-                    src={userData.photoUrl ? userData.photoUrl : "src/assets/icons/user-blue-icon-for-profile.svg"}
+                    src={userData.photoUrl ? userData.photoUrl : "/icons/user-blue-icon-for-profile.svg"}
                     className={style.profile_photo}
                     alt="Profile"
                 />
@@ -22,7 +22,7 @@ export const User: React.FC<Props> = ({ userData }) => {
                 </div>
             </div>
             <div className={style.profile_about_me}>
-                <h3>О себе: </h3><p>{userData.aboutMe}</p>
+                <h3>О себе: </h3><p>{userData.about}</p>
             </div>
         </div>
     );

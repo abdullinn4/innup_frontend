@@ -18,14 +18,14 @@ export const IconWithMenu:React.FC<IconWithMenuProps> = ({user}) => {
     return(
         <>
             <div>
-                {user && (
+                
                     <img
-                        src={user.photoUrl ? user.photoUrl : "src/assets/icons/user-blue-icon.svg"}
+                        src={"/icons/user-blue-icon.svg"}
                         alt="user avatar"
-                        className={`${user.photoUrl ? style.customIcon : style.defaultIcon}`}
+                        className={style.defaultIcon}
                         onMouseDown={handleMenuToggle}
                     />
-                )}
+                
             </div>
             {showMenu && <MenuModal onClose={toggleMenu}/>}
         </>
