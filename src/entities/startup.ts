@@ -22,6 +22,7 @@ export interface StartupEntity{
     phone: string;
     mainPhotoPath: string;
     additionalPhotosPaths: string[];
+    creator: string;
     userId: string;
 }
 export interface StartupProfile{

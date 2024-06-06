@@ -1,11 +1,11 @@
 import axios from 'axios';
 import {StartupProfile, UserBasicData} from "../entities";
 
-const API_URL = 'http://localhost:5294/api/Profile';
+const API_URL = 'http://localhost:5294/api';
 //получение по id юзера базовой инфы о юзере типа UserBasicData
 export const fetchUserData = async (userId: string): Promise<UserBasicData> => {
     try {
-        const response = await axios.get(`${API_URL}/User/Fetch/${userId}`);
+        const response = await axios.get(`${API_URL}/User/GetById/${userId}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching user data:', error);
