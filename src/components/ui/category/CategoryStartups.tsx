@@ -25,14 +25,13 @@ export const CategoryStartups: React.FC = () => {
         }
     }, [category]);
 
-
     return (
         <main className={style1.category_wrapper}>
             <h2>Стартапы в категории: {categoryName}</h2>
             <div className={style.startups_wrapper}>
                 <div className={style.startups_row}>
                     {categoryStartups.map(startup => (
-                        <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} imgUrl={startup.imgUrl} />
+                        <Startup key={startup.id} id={startup.id} name={startup.name} description={startup.description} imgUrl={`http://localhost:5294/startupPhotos/${startup.mainPhotoPath}`} />
                     ))}
                 </div>
             </div>

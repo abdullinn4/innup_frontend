@@ -5,6 +5,6 @@ export const loginUserService = async (email: string, password: string): Promise
     const response = await axios.post<UserBasicData>('http://localhost:5294/api/User/Login', {
         email,
         password,
-    });
+    },{withCredentials: true});
     return response.data;
 };

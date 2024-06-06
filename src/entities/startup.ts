@@ -22,13 +22,11 @@ export interface StartupEntity{
     phone: string;
     mainPhotoPath: string;
     additionalPhotosPaths: string[];
-    //createDate: string;
     userId: string;
-    //status: 'В обработке' | 'Принято' | 'Отклонено';
 }
 export interface StartupProfile{
     id: string;
     name: string;
     description: string;
-    imgUrl: string;
+    mainPhotoPath: string;
 }

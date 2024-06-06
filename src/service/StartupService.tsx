@@ -3,7 +3,7 @@ import {StartupEntity, StartupProfile} from "../entities";
 //Получение всех стартапов для главной страницы, но статус у каждого стартапа = Принято
 export const fetchStartups = async (): Promise<StartupEntity[]> => {
     try {
-        const response = await axios.get<StartupEntity[]>('http://localhost:5294/api/Startup/Fetch');
+        const response = await axios.get<StartupEntity[]>('http://localhost:5294/api/Startup/Fetch', {withCredentials:true});
         return response.data;
     } catch (e) {
         console.error(e);
@@ -33,7 +33,7 @@ export const fetchStartupById = async (id: string): Promise<StartupEntity> => {
 //Получаем массив стартапов по категории
 export const fetchStartupsByCategory = async (category: string | undefined): Promise<StartupProfile[]> => {
     try {
-        const response = await axios.get<StartupProfile[]>(`http://localhost:5294/api/Categories/${category}`);
+        const response = await axios.get<StartupProfile[]>(`http://localhost:5294/api/Startup/GetByCategory/${category}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching startup:', error);
